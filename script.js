@@ -26,5 +26,29 @@ function getPlayerChoice() {
 
 
 function playRound(playerSelection, computerSelection) {
-
+    // compare the player and computer choices - build string saying who chose what
+    let choices = `You chose ${playerSelection}. The computer chose ${computerSelection}. `;
+    // append the game result to the choices string and return the message
+    // if they are they same return tie game message
+    if (playerSelection === computerSelection) {
+        return choices + "It's a tie!";
+    }
+    // if player chose rock > if computer chose scissors, player wins, else they lose
+    if (playerSelection === "rock") {
+        if(computerSelection === "scissors") {
+            return choices + "You win!";
+        } else return choices + "You lose!";
+    }
+    // if player chose paper > if computer chose rock, player wins, else they lose
+    if (playerSelection === "paper") {
+        if(computerSelection === "rock") {
+            return choices + "You win!";
+        } else return choices + "You lose!";
+    }
+    // if player chose scissors > if computer chose paper, player wins, else they lose
+    if (playerSelection === "scissors") {
+        if(computerSelection === "paper") {
+            return choices + "You win!";
+        } else return choices + "You lose!";
+    }
 }
