@@ -85,6 +85,8 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     
+    console.log("Five rounds! Whoever has the higher score at the end wins!");
+
     // play 5 rounds of the game
     for (let i = 0; i < 5; i++) {
         console.log(`Round ${i+1} (current score - You: ${playerScore} | Computer: ${computerScore})`);
@@ -95,6 +97,17 @@ function game() {
             computerScore++;
         }
 
+    }
+
+    // check for tie score and keep playing until someone wins
+    while(playerScore === computerScore) {
+        console.log(`SUDDEN DEATH! (current score - You: ${playerScore} | Computer: ${computerScore})`);
+        let result = playRound(getPlayerChoice(), getComputerChoice());
+        if (result === "win") {
+            playerScore ++;
+        } else if (result === "lose") {
+            computerScore++;
+        }
     }
 
     // print results
