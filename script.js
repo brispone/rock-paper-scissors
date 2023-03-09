@@ -37,13 +37,16 @@ function getPlayerChoice() {
     }
 }
 
+
+/* This function is no longer necessary after the move away from text input
+
 function validateChoice(choice){
     //check to make sure the player input is a legal game option
     if (choice === "rock" || choice === "paper" || choice === "scissors") {
         return true;
     } else return false;
 }
-
+*/
 
 // This function displays the result of the game and updates the scores accordingly
 function displayResults(result) {
@@ -51,15 +54,15 @@ function displayResults(result) {
 
     switch(result) {
         case "tie":
-            resultsDiv.textContent = "It's a tie!";
+            resultsDiv.textContent = "The round is a tie!";
             break;
         case "win":
-            resultsDiv.textContent = "You win!";
+            resultsDiv.textContent = "You win the round!";
             playerScore++; // add point to player's total score
             updateScore();
             break;
         case "lose":
-            resultsDiv.textContent = "You lose!"
+            resultsDiv.textContent = "You lose the round!"
             compScore++; // add point to computer's total score
             updateScore();
             break;
@@ -69,12 +72,40 @@ function displayResults(result) {
 
 }
 
+function resetGame() {
+    document.querySelector("#gameover-div").replaceChildren();
+    playerScore = 0;
+    compScore = 0;
+    updateScore();
+}
+
+function endGame(playerWin) {
+    const gameOverMessage = document.querySelector("#gameover-div");
+    const playAgainButton = document.createElement("button");
+    playAgainButton.textContent = "Play again?";
+    playAgainButton.addEventListener("click", () => resetGame());
+
+    if(playerWin) {
+        gameOverMessage.textContent = "You are victorious!";
+    } else gameOverMessage.textContent = "You have been defeated!";
+
+    gameOverMessage.appendChild(playAgainButton);
+}
+
+// This function updates the running score and then checks for a winner
 function updateScore() {
     const playerScoreSpan = document.querySelector("#player-score");
     const compScoreSpan = document.querySelector("#computer-score");
 
     playerScoreSpan.textContent = playerScore;
     compScoreSpan.textContent = compScore;
+
+    if(playerScore >= 5) {
+        endGame(true);
+    }
+    if(compScore >= 5) {
+        endGame(false);
+    }
 }
 
 
@@ -130,7 +161,8 @@ playButtons.forEach(btn => {
 });
 
 
-/*
+/* No longer necessary after the move away from console based gameplay
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
