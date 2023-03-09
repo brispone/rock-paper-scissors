@@ -1,3 +1,7 @@
+// initialize variables for running score
+let playerScore = 0;
+let compScore = 0;
+
 function getComputerChoice() {
 // get a random number from 0-2
 let randomChoice = Math.floor(Math.random() * 3);
@@ -40,6 +44,8 @@ function validateChoice(choice){
     } else return false;
 }
 
+
+// This function displays the result of the game and updates the scores accordingly
 function displayResults(result) {
     const resultsDiv = document.querySelector("#game-results");
 
@@ -49,14 +55,26 @@ function displayResults(result) {
             break;
         case "win":
             resultsDiv.textContent = "You win!";
+            playerScore++; // add point to player's total score
+            updateScore();
             break;
         case "lose":
             resultsDiv.textContent = "You lose!"
+            compScore++; // add point to computer's total score
+            updateScore();
             break;
         default:
             "Oops! Something went wrong.";
     }
 
+}
+
+function updateScore() {
+    const playerScoreSpan = document.querySelector("#player-score");
+    const compScoreSpan = document.querySelector("#computer-score");
+
+    playerScoreSpan.textContent = playerScore;
+    compScoreSpan.textContent = compScore;
 }
 
 
