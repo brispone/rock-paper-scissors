@@ -11,13 +11,9 @@ let randomChoice = Math.floor(Math.random() * 3);
 // 2 = scissors
 
 // return the computer choice
-if (randomChoice === 0) {
-    return "rock";
-} else if (randomChoice === 1) {
-    return "paper";
-} else {
-    return "scissors";
-}
+const choicesArray = ["rock", "paper", "scissors"];
+return choicesArray[randomChoice];
+
 }
 
 
