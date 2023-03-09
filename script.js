@@ -20,6 +20,9 @@ if (randomChoice === 0) {
 }
 }
 
+
+/* This function is no longer necessary after the move away from text input
+
 function getPlayerChoice() {
     // prompt the player to choose and store it in a variable
     let playerChoice = prompt("Choose rock, paper, or scissors: ");
@@ -36,7 +39,7 @@ function getPlayerChoice() {
         return getPlayerChoice();
     }
 }
-
+*/
 
 /* This function is no longer necessary after the move away from text input
 
