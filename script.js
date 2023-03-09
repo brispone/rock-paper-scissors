@@ -40,42 +40,64 @@ function validateChoice(choice){
     } else return false;
 }
 
+function displayResults(result) {
+    const resultsDiv = document.querySelector("#game-results");
+
+    switch(result) {
+        case "tie":
+            resultsDiv.textContent = "It's a tie!";
+            break;
+        case "win":
+            resultsDiv.textContent = "You win!";
+            break;
+        case "lose":
+            resultsDiv.textContent = "You lose!"
+            break;
+        default:
+            "Oops! Something went wrong.";
+    }
+
+}
+
+
 function playRound(playerSelection, computerSelection) {
+
+
     // compare the player and computer choices and log them to the console
     console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}.`);
     // log result of the game to console and return "win", "lose", or "tie" depending on the player's result
     // if both choices are the same, it is a tie
     if (playerSelection === computerSelection) {
-        console.log("It's a tie!");
+        displayResults("tie");
         return "tie";
     }
     // if player chose rock > if computer chose scissors, player wins, else they lose
     if (playerSelection === "rock") {
         if(computerSelection === "scissors") {
-            console.log("You win!");
+            displayResults("win");
             return "win";
         } else  {
-            console.log("You lose!");
+            displayResults("lose");
             return "lose";
         }
     }
     // if player chose paper > if computer chose rock, player wins, else they lose
     if (playerSelection === "paper") {
         if(computerSelection === "rock") {
-            console.log("You win!");
+            displayResults("win");
             return "win";
         } else {
-            console.log("You lose!");
+            displayResults("lose");
             return "lose";
         }
     }
     // if player chose scissors > if computer chose paper, player wins, else they lose
     if (playerSelection === "scissors") {
         if(computerSelection === "paper") {
-            console.log("You win!");
+            displayResults("win");
             return "win";
         } else {
-            console.log("You lose!");
+            displayResults("lose");
             return "lose";
         }
     }
